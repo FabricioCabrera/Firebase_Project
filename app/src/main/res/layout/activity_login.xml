@@ -65,7 +65,7 @@
         android:background="@color/teal_200"
         android:onClick="iniciarsesión"
         android:text="@string/iniciar"
-        android:textColor="#5E35B1"
+        android:textColor="#FFFFFF"
         android:textColorHighlight="#D83535"
         android:textColorLink="#2ECABE"
         app:layout_constraintBottom_toBottomOf="parent"
