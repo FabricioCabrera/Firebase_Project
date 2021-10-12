@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:passwordToggleEnabled="true"
     android:background="@color/Color_ventaanas"
+
     tools:context=".Login">
 
 
@@ -22,38 +24,43 @@
         app:srcCompat="@drawable/profile" />
 
     <EditText
-        android:id="@+id/txtNom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/txtCorreo"
+        android:layout_width="312dp"
+        android:layout_height="56dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/ColorPrimary"
         android:ems="10"
-        android:hint="@string/nombre"
+        android:hint="@string/correo"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/txtCont"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="312dp"
+        android:layout_height="52dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/ColorPrimary"
+        android:clickable="true"
+        android:drawableEnd="@drawable/ic_baseline_visibility_off_24"
         android:ems="10"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:hint="@string/contrase_a"
         android:inputType="textPassword"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNom" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCorreo" />
 
     <Button
         android:id="@+id/btniniciar"
@@ -63,7 +70,6 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="32dp"
         android:background="@color/teal_200"
-        android:onClick="iniciarsesión"
         android:text="@string/iniciar"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#D83535"
@@ -73,9 +79,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCont"
-        app:layout_constraintVertical_bias="0.161"
-        app:rippleColor="#FBFBFB"
-        tools:ignore="UsingOnClickInXml" />
+        app:layout_constraintVertical_bias="0.169"
+        app:rippleColor="#FBFBFB" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

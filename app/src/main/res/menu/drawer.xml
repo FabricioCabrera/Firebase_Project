@@ -6,4 +6,10 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/my_close_drawable"
+        android:orderInCategory="100"
+        android:title="@string/Cerrar"
+        app:showAsAction="never" />
 </menu>

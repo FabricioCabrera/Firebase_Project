@@ -17,17 +17,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.firebase_project.MapsActivity;
 import com.example.firebase_project.Miposicion;
 import com.example.firebase_project.R;
 import com.example.firebase_project.databinding.FragmentHomeBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public  class HomeFragment extends Fragment implements View.OnClickListener{
@@ -38,7 +42,14 @@ public  class HomeFragment extends Fragment implements View.OnClickListener{
     private EditText txtLatitud;
     private EditText txtLongitud;
     private EditText txtAltitud;
+
+    private TextView textCorreo, textUser;
     private Button btnMaps;
+
+
+    private FirebaseAuth mAuth;
+    DatabaseReference mDatabase;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,16 +59,25 @@ public  class HomeFragment extends Fragment implements View.OnClickListener{
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+
         btnUb = root.findViewById(R.id.buttonUbicacion);
         btnMaps = root.findViewById(R.id.buttonMap);
         txtLatitud = root.findViewById(R.id.editLati);
         txtLongitud = root.findViewById(R.id.editLong);
         txtAltitud = root.findViewById(R.id.editAltitud);
+
+
         btnUb.setOnClickListener(this);
         btnMaps.setOnClickListener(this);
 
+
         return root;
     }
+
+
 
     @Override
     public void onDestroyView() {

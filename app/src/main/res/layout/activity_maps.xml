@@ -2,6 +2,7 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
@@ -33,7 +34,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:onClick="onClick"
-        android:text="Mi Favorito" />
+        android:text="@string/mi_favorito" />
 
     <Button
         android:id="@+id/limp"
@@ -42,7 +43,7 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:onClick="onClick"
-        android:text="Limpiar Marcas" />
+        android:text="@string/limpiar_marcas" />
 
 
 </LinearLayout>

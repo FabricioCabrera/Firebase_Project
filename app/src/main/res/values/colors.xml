@@ -9,5 +9,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="ColorPrimary">#FF018786</color>
     <color name="Color_ventaanas">#D0FFE2</color>
+    <color name="ColorButon">#2a9d8f</color>
+
+    <color name="button_border">#FFFFFFFF</color>
+
+
 
 </resources>
