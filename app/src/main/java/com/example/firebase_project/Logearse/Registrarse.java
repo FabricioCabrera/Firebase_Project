@@ -1,4 +1,4 @@
-package com.example.firebase_project;
+package com.example.firebase_project.Logearse;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +13,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.firebase_project.MainActivity;
+import com.example.firebase_project.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,7 +25,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.rpc.context.AttributeContext;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +36,8 @@ public class Registrarse extends AppCompatActivity {
 
     private EditText Correo, Nombre, Contraseña;
     private EditText Confirmarcontraseña;
-    private Button btnGuardar;
+    private Button btnRegistar, btnIniciar;
+    private ImageView Foto;
 
 
     FirebaseAuth mAuth;
@@ -45,6 +48,7 @@ public class Registrarse extends AppCompatActivity {
     private String correo = "";
     private String contraseña = "";
     private String Ccontraseña = "";
+    private String url = "";
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -60,13 +64,25 @@ public class Registrarse extends AppCompatActivity {
         Correo = (EditText) findViewById(R.id.txtCorreo);
         Contraseña = (EditText) findViewById(R.id.txtcontraseña);
         Confirmarcontraseña = (EditText) findViewById(R.id.txtvcontraseña);
-        btnGuardar = (Button) findViewById(R.id.btguardar);
+        Foto = (ImageView) findViewById(R.id.imgPerfil);
+
+        btnRegistar = (Button) findViewById(R.id.btguardar);
+        btnIniciar = (Button) findViewById(R.id.btnInicia);
 
         Contraseña.setOnTouchListener(this::onTouch);
         Confirmarcontraseña.setOnTouchListener(this::onTouch2);
 
 
-        btnGuardar.setOnClickListener((view) -> {
+        btnIniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(Registrarse.this, Login.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        btnRegistar.setOnClickListener((view) -> {
             registrar();
         });
 
@@ -130,6 +146,7 @@ public class Registrarse extends AppCompatActivity {
         correo = Correo.getText().toString();
         contraseña = Contraseña.getText().toString();
         Ccontraseña = Confirmarcontraseña.getText().toString();
+        url= Foto.getDrawable().toString();
 
         if (!nombre.isEmpty() && !correo.isEmpty() && !contraseña.isEmpty() && !Ccontraseña.isEmpty()) {
             if (isEmailValid(correo)) {
@@ -146,6 +163,7 @@ public class Registrarse extends AppCompatActivity {
                                             map.put("email", correo);
                                             map.put("password", contraseña);
                                             map.put("Confirm password", Ccontraseña);
+                                            map.put("img", url);
 
 
                                             String id = mAuth.getCurrentUser().getUid();

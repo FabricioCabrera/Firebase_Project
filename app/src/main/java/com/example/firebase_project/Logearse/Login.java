@@ -1,4 +1,4 @@
-package com.example.firebase_project;
+package com.example.firebase_project.Logearse;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,11 +14,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.firebase_project.Drawer;
+import com.example.firebase_project.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,7 +30,7 @@ public class Login extends AppCompatActivity {
 
     private EditText Correo;
     private EditText Contraseña;
-    private Button BtnInicia;
+    private Button BtnInicia, btnCrea;
 
 
     private String correo = "";
@@ -46,7 +47,16 @@ public class Login extends AppCompatActivity {
         Correo = (EditText) findViewById(R.id.txtCorreo);
         Contraseña = (EditText) findViewById(R.id.txtCont);
         BtnInicia = (Button) findViewById(R.id.btniniciar);
+        btnCrea= (Button)findViewById(R.id.btnCrear);
 
+        btnCrea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(Login.this, Registrarse.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
         //Seteamos el método de visibilidad
         Contraseña.setOnTouchListener(this::onTouch);
@@ -66,7 +76,7 @@ public class Login extends AppCompatActivity {
         });
 
         //Sirve para colocar un ícono el el EditText
-        Correo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_email_24, 0, 0, 0);
+        //Correo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_email_24, 0, 0, 0);
         //Contraseña.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_supervised_user_circle_24,0,0,0);
 
 

@@ -1,4 +1,4 @@
-package com.example.firebase_project;
+package com.example.firebase_project.Mapa;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.firebase_project.R;
 import com.example.firebase_project.databinding.ActivityMapsBinding;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -88,7 +89,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //habilito los controles del zoom
         mMap.getUiSettings().setZoomControlsEnabled(true);
         //doy zoom 16 para que se acerque
-        CameraUpdate zoomCam = CameraUpdateFactory.zoomTo(16);
+        CameraUpdate zoomCam = CameraUpdateFactory.zoomTo(17);
         mMap.animateCamera(zoomCam);
 
         // fijo el long click al mapa

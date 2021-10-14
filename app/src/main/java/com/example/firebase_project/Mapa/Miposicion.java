@@ -1,4 +1,4 @@
-package com.example.firebase_project;
+package com.example.firebase_project.Mapa;
 
 import android.location.Location;
 import android.location.LocationListener;
