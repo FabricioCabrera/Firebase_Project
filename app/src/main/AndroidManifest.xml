@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Firebase_Project">
         <activity
-            android:name=".CRUD_USER"
+            android:name=".Opciones.CRUD_USER"
             android:exported="true" />
         <activity
             android:name=".Editar.Cambiar_Password"

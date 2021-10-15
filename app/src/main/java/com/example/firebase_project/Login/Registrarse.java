@@ -36,7 +36,7 @@ import java.util.regex.Pattern;
 public class Registrarse extends AppCompatActivity {
 
 
-    private EditText Correo, Nombre, Contraseña, Edad, Telefono;
+    private EditText Correo, Nombre, Contraseña, Edad, Telefono, Imagen;
     private EditText Confirmarcontraseña;
     private Button btnRegistar, btnIniciar;
 
@@ -73,6 +73,10 @@ public class Registrarse extends AppCompatActivity {
         Edad = (EditText) findViewById(R.id.txtEdad);
         Telefono = (EditText) findViewById(R.id.txtTelefono);
         Confirmarcontraseña = (EditText) findViewById(R.id.txtvcontraseña);
+        Imagen= (EditText) findViewById(R.id.txtImgPerfil);
+
+
+
         btnRegistar = (Button) findViewById(R.id.btguardar);
         btnIniciar = (Button) findViewById(R.id.btnInicia);
 
@@ -158,6 +162,7 @@ public class Registrarse extends AppCompatActivity {
         Ccontraseña = Confirmarcontraseña.getText().toString();
         edad = Edad.getText().toString();
         telefono = Telefono.getText().toString();
+        imagen=Imagen.getText().toString();
 
         if (!nombre.isEmpty() && !correo.isEmpty() && !contraseña.isEmpty()
                 && !Ccontraseña.isEmpty() && !edad.isEmpty() && !telefono.isEmpty()) {
@@ -184,7 +189,7 @@ public class Registrarse extends AppCompatActivity {
                                             map.put("Confirm password", Ccontraseña);
                                             map.put("edad", edad);
                                             map.put("telefono", telefono);
-                                            map.put("imagen", "");
+                                            map.put("imagen", imagen);
 
 
                                             String id = mAuth.getCurrentUser().getUid();
@@ -209,6 +214,7 @@ public class Registrarse extends AppCompatActivity {
                                             });
 
                                         } else {
+                                            progressDialog.dismiss();
 
                                             // If sign in fails, display a message to the user.
                                             Toast.makeText(getApplicationContext(), "La conexión no se completo", Toast.LENGTH_SHORT).show();
@@ -219,16 +225,18 @@ public class Registrarse extends AppCompatActivity {
                                 });
 
                     } else {
+                        progressDialog.dismiss();
 
                         Toast.makeText(getApplicationContext(), "Contraseña debe tener al menos 6 carácteres", Toast.LENGTH_SHORT).show();
 
 
                     }
                 } else {
-
+                    progressDialog.dismiss();
                     Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
                 }
             } else {
+                progressDialog.dismiss();
 
                 Toast.makeText(this, "Correo incorrecto", Toast.LENGTH_SHORT).show();
 

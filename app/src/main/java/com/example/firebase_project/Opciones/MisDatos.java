@@ -58,7 +58,6 @@ public class MisDatos extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MisDatos.this, Cambiar_Password.class);
                 startActivity(i);
-                finish();
             }
         });
 
@@ -68,26 +67,26 @@ public class MisDatos extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    String N = snapshot.child("name").getValue().toString();
-                    String E = snapshot.child("edad").getValue().toString();
-                    String T = snapshot.child("telefono").getValue().toString();
-                    String C = snapshot.child("email").getValue().toString();
-                    String I = snapshot.child("imagen").getValue().toString();
-                    String P = snapshot.child("password").getValue().toString();
+                    String Name = snapshot.child("name").getValue().toString();
+                    String Edad = snapshot.child("edad").getValue().toString();
+                    String Telefono = snapshot.child("telefono").getValue().toString();
+                    String Correo = snapshot.child("email").getValue().toString();
+                    String Imagen = snapshot.child("imagen").getValue().toString();
+                    String contraseña = snapshot.child("password").getValue().toString();
 
-                    txNombreDato.setText(N);
-                    txEdadDato.setText(E);
-                    txTelefonoDato.setText(T);
-                    txCorreoDato.setText(C);
-                    txContraseñaDato.setText(P);
+                    txNombreDato.setText(Name);
+                    txEdadDato.setText(Edad);
+                    txTelefonoDato.setText(Telefono);
+                    txCorreoDato.setText(Correo);
+                    txContraseñaDato.setText(contraseña);
 
-                    URL.setImageURI(Uri.parse(I));
+                    URL.setImageURI(Uri.parse(Imagen));
 
 
 
                     try {
                         //Si sube una imagen
-                        Picasso.get().load(I).placeholder(R.drawable.foto_perfil).into(URL);
+                        Picasso.get().load(Imagen).placeholder(R.drawable.foto_perfil).into(URL);
                     }catch (Exception e){
                         //si no tiene una imagen
                         Picasso.get().load(R.drawable.foto_perfil).into(URL);

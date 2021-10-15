@@ -5,7 +5,9 @@ public class Persona {
     private String Nombre;
     private String Apellido;
     private String Correo;
-    private String Password;
+    private String Telefono;
+    private String Direccion;
+
 
     public String getUid() {
         return uid;
@@ -39,12 +41,20 @@ public class Persona {
         Correo = correo;
     }
 
-    public String getPassword() {
-        return Password;
+    public String getTelefono() {
+        return Telefono;
     }
 
-    public void setPassword(String password) {
-        Password = password;
+    public void setTelefono(String telefono) {
+        Telefono = telefono;
+    }
+
+    public String getDireccion() {
+        return Direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        Direccion = direccion;
     }
 
     @Override

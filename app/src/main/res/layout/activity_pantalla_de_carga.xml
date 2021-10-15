@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Red Social Firebase"
+            android:text="Proyecto Final Firebase"
             android:textColor="#000"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -41,7 +41,7 @@
             android:id="@+id/appDesarrollado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="40dp"
             android:text="Desarrollado por: SC y JM"
             android:textColor="#000"
             android:textSize="18sp"

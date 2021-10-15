@@ -3,6 +3,7 @@ package com.example.firebase_project.Editar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.auth.User;
 
 import java.util.HashMap;
 
@@ -49,7 +51,7 @@ public class Cambiar_Password extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("Users");
 
 
         txCorreoA = (TextView) findViewById(R.id.CorreoActual);
@@ -61,10 +63,8 @@ public class Cambiar_Password extends AppCompatActivity {
         BtnCambiarContraseña = (Button) findViewById(R.id.btnCambiarPasw);
 
 
-
-
         String id = mAuth.getCurrentUser().getUid();
-        mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
+        mDatabase.child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -78,17 +78,17 @@ public class Cambiar_Password extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                System.out.println("No se puede encontrar ningún usuario" + error);
+                System.out.println("No se puede encontrar ningúna contraseña" + error);
 
             }
         });
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("Users");
 
         //CAMBIAR CONTRASEÑA
         BtnCambiarContraseña.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+
                 String PASS_ANTERIOR = etContraseñaA.getText().toString().trim();
                 String NUEVO_PASS = etCContraseñaNueva.getText().toString().trim();
 
@@ -97,10 +97,9 @@ public class Cambiar_Password extends AppCompatActivity {
                 }
                 if (TextUtils.isEmpty(NUEVO_PASS)) {
                     Toast.makeText(Cambiar_Password.this, "El campo nueva contraseña está vacío", Toast.LENGTH_SHORT).show();
-                    {
-                    }
                 }
                 if (!NUEVO_PASS.equals("") && NUEVO_PASS.length() > 6) {
+                    progressDialog.dismiss();
                     Cambio_De_Contraseña(PASS_ANTERIOR, NUEVO_PASS);
                 } else {
                     etCContraseñaNueva.setError("La contraseaña debe ser mayor a 6 carácteres");
@@ -108,56 +107,64 @@ public class Cambiar_Password extends AppCompatActivity {
                 }
             }
         });
-
     }
+
 
     //MÉTODO PARA CAMBIAR LA CONTRASEÑA
     private void Cambio_De_Contraseña(String pass_anterior, String nuevo_pass) {
+
         progressDialog.show();
-        progressDialog.setTitle("Actualizando");
-        progressDialog.setMessage("Espere por favor");
+        progressDialog.setTitle("Registrando");
+        progressDialog.setMessage("Espere por favor...");
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail(), pass_anterior);
-        user.reauthenticate(authCredential).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                user.updatePassword(nuevo_pass).addOnSuccessListener(new OnSuccessListener<Void>() {
+        user.reauthenticate(authCredential)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(Void unused) {
-                        progressDialog.dismiss();
-                        String value = etCContraseñaNueva.getText().toString();
-                        HashMap<String, Object> result = new HashMap<>();
-                        result.put("password", value);
+                    public void onSuccess(Void aVoid) {
 
-                        //ACTUALIZAMOS LA NUEVA CONTRASEÑA EN LA BD
-                        mDatabase.child(user.getUid()).updateChildren(result).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(Cambiar_Password.this, "Contraseña cambiada", Toast.LENGTH_SHORT).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
+                        user.updatePassword(nuevo_pass)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+
+                                        progressDialog.dismiss();
+
+                                        String value = etCContraseñaNueva.getText().toString().trim();
+                                        HashMap<String, Object> result = new HashMap<>();
+                                        result.put("password", value);
+
+                                        //ACTUALIZAMOS LA NUEVA CONTRASEÑA EN LA BD
+                                        mDatabase.child(user.getUid()).updateChildren(result)
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+                                                        Toast.makeText(Cambiar_Password.this, "Contraseña cambiada", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                progressDialog.dismiss();
+                                            }
+                                        });
+
+                                        //lUEGO CERRAMOS SESIÓN
+                                        mAuth.signOut();
+                                        Intent i = new Intent(Cambiar_Password.this, Login.class);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 progressDialog.dismiss();
+
                             }
                         });
-
-                        //lUEGO CERRAMOS SESIÓN
-                        mAuth.signOut();
-                        Intent i = new Intent(Cambiar_Password.this, Login.class);
-                        startActivity(i);
-                        finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        progressDialog.dismiss();
-
-                    }
-                });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 progressDialog.dismiss();
@@ -166,12 +173,5 @@ public class Cambiar_Password extends AppCompatActivity {
         });
     }
 
-
-    /*//PARA RETROCEDER A LA ACTIVIDAD ANTERIOR
-    @Override
-    public boolean onNavigateUp() {
-        onBackPressed();
-        return super.onNavigateUp();
-    }*/
 }
 

@@ -14,16 +14,19 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.firebase_project.CRUD_USER;
+import com.example.firebase_project.Opciones.CRUD_USER;
 import com.example.firebase_project.Login.Login;
-import com.example.firebase_project.Mapa.MapsActivity;
-import com.example.firebase_project.Mapa.Miposicion;
+
 import com.example.firebase_project.Mapa.nav_maps;
 import com.example.firebase_project.Opciones.MisDatos;
 import com.example.firebase_project.R;
 import com.example.firebase_project.databinding.FragmentHomeBinding;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,7 +37,6 @@ import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.SimpleTimeZone;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -85,7 +87,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         btnSALIR.setOnClickListener(this);
 
 
-
         //OBTENER DESDE LA BD LOS DATOS
         String id = mAuth.getCurrentUser().getUid();
         mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
@@ -134,9 +135,24 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             Intent i = new Intent(getContext(), MisDatos.class);
             startActivity(i);
         }
+
         if (btnCRUD == v) {
             Intent i = new Intent(getContext(), CRUD_USER.class);
             startActivity(i);
+        }
+        if (btnUBICACION == v) {
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.setReorderingAllowed(true);
+
+            transaction.replace(R.id.Fragmento, new nav_maps());
+
+            transaction.commit();
+
+            return;
+
+
+
         }
         if (btnSALIR == v) {
             mAuth.signOut();

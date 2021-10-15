@@ -83,13 +83,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(lat, lon);
 
         //agrego un marca con la ubicacion
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Mi ubicación"));
         //mover la camara a mi ubicacion
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         //habilito los controles del zoom
         mMap.getUiSettings().setZoomControlsEnabled(true);
         //doy zoom 16 para que se acerque
-        CameraUpdate zoomCam = CameraUpdateFactory.zoomTo(13);
+        CameraUpdate zoomCam = CameraUpdateFactory.zoomTo(11);
         mMap.animateCamera(zoomCam);
 
         // fijo el long click al mapa
@@ -100,9 +100,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapLongClick(@NonNull @NotNull LatLng latLng) {
         Toast.makeText(MapsActivity.this, "click posición" + latLng.latitude + latLng.longitude, Toast.LENGTH_SHORT).show();
         marker = mMap.addMarker(new MarkerOptions().position(latLng).title("Mi posición"));
-        marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.pencil));
+        marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.punto));
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 11));
         guardarPreferencias(latLng);
     }
 
@@ -119,8 +119,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         if  (lat!=0){
             LatLng puntoPref= new LatLng(lat,log);
-            //mMap.addMarker(new MarkerOptions().position(puntoPref).title("Mi posición"));
-            marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.pencil));
+           // mMap.addMarker(new MarkerOptions().position(puntoPref).title("Mi posición"));
+            marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.punto));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(puntoPref));
         }else{
             AlertDialog.Builder alert= new AlertDialog.Builder(this);
@@ -143,6 +143,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             cargarPreferencia();
 
         }else if(v == btneliminar){
+
             eliminarMarcas();
         }
 

@@ -26,25 +26,23 @@
 
         <LinearLayout
             android:layout_width="360dp"
-            android:layout_height="692dp"
+            android:layout_height="650dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="48dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="5dp"
+
             android:background="#28FFFFFF"
 
-
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
+
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginBottom="25dp"
+
                 android:text="REGÍSTRATE"
 
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
@@ -52,16 +50,17 @@
                 android:textSize="40sp"
                 app:layout_constraintBottom_toTopOf="@+id/txtNombre" />
 
-
             <EditText
                 android:id="@+id/txtNombre"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="32dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_border"
                 android:drawableStart="@drawable/ic_baseline_supervised_user_circle_24"
+                android:drawablePadding="5dp"
                 android:drawableTint="#039BE5"
                 android:ems="10"
                 android:hint="Nombres"
@@ -80,9 +79,10 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="30dp"
                 android:background="@drawable/button_border"
                 android:drawableStart="@drawable/ic_baseline_perm_contact_calendar_24"
+                android:drawablePadding="5dp"
                 android:drawableTint="#039BE5"
                 android:ems="10"
                 android:hint="Edad"
@@ -100,13 +100,36 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="-20dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="30dp"
                 android:background="@drawable/button_border"
                 android:drawableStart="@drawable/ic_baseline_phone_24"
+                android:drawablePadding="5dp"
                 android:drawableTint="#039BE5"
                 android:ems="10"
                 android:hint="Telefono"
                 android:inputType="number"
+                android:minHeight="48dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="#FFFFFF" />
+
+
+            <EditText
+                android:id="@+id/txtImgPerfil"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="-20dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/button_border"
+                android:drawableStart="@drawable/ic_baseline_image_24"
+                android:drawablePadding="5dp"
+                android:drawableTint="#039BE5"
+                android:ems="10"
+                android:hint="Imagen Perfil (Opcional)"
+                android:inputType="textEmailAddress"
                 android:minHeight="48dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
@@ -121,9 +144,10 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="-20dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="30dp"
                 android:background="@drawable/button_border"
                 android:drawableStart="@drawable/ic_baseline_email_24"
+                android:drawablePadding="5dp"
                 android:drawableTint="#039BE5"
                 android:ems="10"
                 android:hint="Correo"
@@ -141,16 +165,16 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="-20dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="30dp"
                 android:background="@drawable/button_border"
                 android:clickable="true"
                 android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:drawableEnd="@drawable/ic_baseline_visibility_off_24"
+                android:drawablePadding="5dp"
                 android:ems="10"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:hint="Contraseña"
-
                 android:inputType="textPassword"
                 android:minHeight="48dp"
                 android:paddingLeft="20dp"
@@ -163,13 +187,14 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
                 android:layout_marginTop="-20dp"
+                android:layout_marginEnd="32dp"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/button_border"
                 android:clickable="true"
                 android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:drawableEnd="@drawable/ic_baseline_visibility_off_24"
+                android:drawablePadding="5dp"
                 android:ems="10"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
@@ -181,7 +206,6 @@
                 android:paddingRight="10dp"
                 android:textColor="@color/white"
                 android:textColorHint="#FFFFFF" />
-
 
 
             <Button

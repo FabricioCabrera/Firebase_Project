@@ -1,4 +1,4 @@
-package com.example.firebase_project;
+package com.example.firebase_project.Opciones;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,12 +10,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.firebase_project.Model.Persona;
+import com.example.firebase_project.R;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,15 +28,13 @@ import java.util.List;
 import java.util.UUID;
 
 
-
-
 public class CRUD_USER extends AppCompatActivity {
 
 
     private List<Persona> listPerson = new ArrayList<Persona>();
     ArrayAdapter<Persona> arrayAdapterPersona;
 
-    EditText nomP, appP, correoP, passwordP;
+    EditText nomP, appP, correoP, telefonoP, direccionP;
     ListView listV_personas;
 
 
@@ -54,11 +52,8 @@ public class CRUD_USER extends AppCompatActivity {
         nomP = findViewById(R.id.txt_nombrePersona);
         appP = findViewById(R.id.txt_appPersona);
         correoP = findViewById(R.id.txt_correoPersona);
-        passwordP = findViewById(R.id.txt_passwordPersona);
-
-
-
-
+        telefonoP = findViewById(R.id.txttelefonoPersona);
+        direccionP = findViewById(R.id.textdirecion);
 
 
         listV_personas = findViewById(R.id.lv_datosPersonas);
@@ -72,7 +67,8 @@ public class CRUD_USER extends AppCompatActivity {
                 nomP.setText(personaSelected.getNombre());
                 appP.setText(personaSelected.getApellido());
                 correoP.setText(personaSelected.getCorreo());
-                passwordP.setText(personaSelected.getPassword());
+                telefonoP.setText(personaSelected.getTelefono());
+                direccionP.setText(personaSelected.getDireccion());
             }
         });
 
@@ -117,12 +113,13 @@ public class CRUD_USER extends AppCompatActivity {
 
         String nombre = nomP.getText().toString();
         String correo = correoP.getText().toString();
-        String password = passwordP.getText().toString();
+        String telefono = telefonoP.getText().toString();
+        String direccion = direccionP.getText().toString();
         String app = appP.getText().toString();
 
         switch (item.getItemId()) {
             case R.id.icon_add: {
-                if (nombre.equals("") || correo.equals("") || password.equals("") || app.equals("")) {
+                if (nombre.equals("") || correo.equals("") || telefono.equals("") || app.equals("") || direccion.equals("")) {
                     validacion();
                 } else {
                     Persona p = new Persona();
@@ -130,7 +127,8 @@ public class CRUD_USER extends AppCompatActivity {
                     p.setNombre(nombre);
                     p.setApellido(app);
                     p.setCorreo(correo);
-                    p.setPassword(password);
+                    p.setTelefono(telefono);
+                    p.setDireccion(direccion);
                     databaseReference.child("Persona").child(p.getUid()).setValue(p);
                     Toast.makeText(this, "Agregado", Toast.LENGTH_LONG).show();
                     limpiarCajas();
@@ -143,7 +141,8 @@ public class CRUD_USER extends AppCompatActivity {
                 p.setNombre(nomP.getText().toString().trim());
                 p.setApellido(appP.getText().toString().trim());
                 p.setCorreo(correoP.getText().toString().trim());
-                p.setPassword(passwordP.getText().toString().trim());
+                p.setTelefono(telefonoP.getText().toString().trim());
+                p.setDireccion(direccionP.getText().toString().trim());
                 databaseReference.child("Persona").child(p.getUid()).setValue(p);
                 Toast.makeText(this, "Actualizado", Toast.LENGTH_LONG).show();
                 limpiarCajas();
@@ -166,14 +165,16 @@ public class CRUD_USER extends AppCompatActivity {
     private void limpiarCajas() {
         nomP.setText("");
         correoP.setText("");
-        passwordP.setText("");
+        telefonoP.setText("");
+        direccionP.setText("");
         appP.setText("");
     }
 
     private void validacion() {
         String nombre = nomP.getText().toString();
         String correo = correoP.getText().toString();
-        String password = passwordP.getText().toString();
+        String telefono = telefonoP.getText().toString();
+        String direccion = direccionP.getText().toString();
         String app = appP.getText().toString();
         if (nombre.equals("")) {
             nomP.setError("Requiere");
@@ -181,8 +182,10 @@ public class CRUD_USER extends AppCompatActivity {
             appP.setError("Requiere");
         } else if (correo.equals("")) {
             correoP.setError("Requiere");
-        } else if (password.equals("")) {
-            passwordP.setError("Requiere");
+        } else if (telefono.equals("")) {
+            telefonoP.setError("Requiere");
+        } else if (direccion.equals("")) {
+            direccionP.setError("Requiere");
         }
     }
 }

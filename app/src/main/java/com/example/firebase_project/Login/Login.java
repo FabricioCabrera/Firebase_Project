@@ -3,6 +3,7 @@ package com.example.firebase_project.Login;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -32,6 +33,8 @@ public class Login extends AppCompatActivity {
     private EditText Contraseña;
     private Button BtnInicia, btnCrea;
 
+    ProgressDialog progressDialog;
+
 
     private String correo = "";
     private String contraseña = "";
@@ -57,6 +60,7 @@ public class Login extends AppCompatActivity {
                 finish();
             }
         });
+
 
         //Seteamos el método de visibilidad
         Contraseña.setOnTouchListener(this::onTouch);
@@ -121,6 +125,8 @@ public class Login extends AppCompatActivity {
 
 
     public void iniciarsesión() {
+
+
 
 
         String user = Correo.getText().toString();
