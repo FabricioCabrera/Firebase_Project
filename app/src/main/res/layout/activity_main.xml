@@ -29,7 +29,7 @@
             android:layout_gravity="center"
             android:padding="25dp"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/Use" />
+            app:srcCompat="@drawable/user" />
 
         <Button
             android:id="@+id/btnIniciar"

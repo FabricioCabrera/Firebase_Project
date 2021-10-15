@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/nav_header_height"
-    android:background="@drawable/side_nav_bar"
+    android:layout_height="200dp"
+    android:background="@drawable/fondo_menu2"
     android:gravity="bottom"
     android:orientation="vertical"
     app:headerLayout="@layout/nav_header_drawer"
@@ -16,14 +16,24 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     tools:ignore="ResourceCycle">
 
-    <ImageView
-        android:id="@+id/nav_header_image"
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/nav_header_desc"
 
-        android:paddingTop="12dp"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+        app:cardCornerRadius="80dp">
+        <!--FOTO DE PERFIL-->
+        <ImageView
+            android:id="@+id/IMG"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/nav_header_desc"
+            app:srcCompat="@mipmap/ic_launcher_round"/>
+        !--FOTO DE PERFIL-->
+
+    </androidx.cardview.widget.CardView>
+
+
 
     <TextView
         android:id="@+id/nav_header_name"
@@ -31,7 +41,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:contentDescription="@string/nav_header_title"
-        android:paddingTop="10dp"
+
         android:text="@string/nav_header_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 

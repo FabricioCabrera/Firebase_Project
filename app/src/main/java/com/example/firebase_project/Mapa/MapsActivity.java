@@ -89,7 +89,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //habilito los controles del zoom
         mMap.getUiSettings().setZoomControlsEnabled(true);
         //doy zoom 16 para que se acerque
-        CameraUpdate zoomCam = CameraUpdateFactory.zoomTo(12);
+        CameraUpdate zoomCam = CameraUpdateFactory.zoomTo(13);
         mMap.animateCamera(zoomCam);
 
         // fijo el long click al mapa

@@ -3,6 +3,7 @@ package com.example.firebase_project;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -32,11 +34,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class Drawer extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityDrawerBinding binding;
+
 
     private FirebaseAuth mAuth;
     DatabaseReference mDatabase;
@@ -49,6 +53,7 @@ public class Drawer extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
 
 
 
@@ -78,8 +83,9 @@ public class Drawer extends AppCompatActivity {
 
         //Sirve para setear los datos del usuario en la cabecera del drawer
         View headerView= navigationView.getHeaderView(0);
-        TextView headerName= headerView.findViewById(R.id.nav_header_name);
-        TextView headerEmail= headerView.findViewById(R.id.nav_header_email);
+        TextView EncabezadoName= headerView.findViewById(R.id.nav_header_name);
+        TextView EncabezadoEmail= headerView.findViewById(R.id.nav_header_email);
+        ImageView EncabezadoURL= headerView.findViewById(R.id.IMG);
 
         String id= mAuth.getCurrentUser().getUid();
 
@@ -87,11 +93,24 @@ public class Drawer extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
-                    String N= snapshot.child("name").getValue().toString();
-                    String C= snapshot.child("email").getValue().toString();
+                    String Name= snapshot.child("name").getValue().toString();
+                    String Correo= snapshot.child("email").getValue().toString();
+                    String Imagen= snapshot.child("imagen").getValue().toString();
 
-                    headerName.setText(N);
-                    headerEmail.setText(C);
+                    EncabezadoName.setText(Name);
+                    EncabezadoEmail.setText(Correo);
+                    EncabezadoURL.setImageURI(Uri.parse(Imagen));
+
+                    try {
+                        //Si sube una imagen
+                        Picasso.get().load(Imagen).placeholder(R.drawable.foto_perfil).into(EncabezadoURL);
+                    }catch (Exception e){
+                        //si no tiene una imagen
+                        Picasso.get().load(R.drawable.foto_perfil).into(EncabezadoURL);
+                    }
+
+
+
                 }
 
             }

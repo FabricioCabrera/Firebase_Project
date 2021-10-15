@@ -75,11 +75,6 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        //Sirve para colocar un ícono el el EditText
-        //Correo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_email_24, 0, 0, 0);
-        //Contraseña.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_supervised_user_circle_24,0,0,0);
-
-
     }
 
     @Override

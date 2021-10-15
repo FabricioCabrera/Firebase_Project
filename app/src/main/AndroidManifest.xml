@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Firebase_Project">
         <activity
+            android:name=".CRUD_USER"
+            android:exported="true" />
+        <activity
             android:name=".Editar.Cambiar_Password"
             android:exported="true" />
         <activity android:name=".Pantalla_de_Carga">
@@ -58,7 +61,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

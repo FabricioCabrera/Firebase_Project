@@ -83,7 +83,7 @@ public class Registrarse extends AppCompatActivity {
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(Registrarse.this, Login.class);
+                Intent i = new Intent(Registrarse.this, Login.class);
                 startActivity(i);
                 finish();
             }
@@ -159,7 +159,8 @@ public class Registrarse extends AppCompatActivity {
         edad = Edad.getText().toString();
         telefono = Telefono.getText().toString();
 
-        if (!nombre.isEmpty() && !correo.isEmpty() && !contraseña.isEmpty() && !Ccontraseña.isEmpty() && !edad.isEmpty() && !telefono.isEmpty()) {
+        if (!nombre.isEmpty() && !correo.isEmpty() && !contraseña.isEmpty()
+                && !Ccontraseña.isEmpty() && !edad.isEmpty() && !telefono.isEmpty()) {
             if (isEmailValid(correo)) {
                 if (contraseña.equals(Ccontraseña)) {
                     if (contraseña.length() >= 6) {
@@ -168,7 +169,7 @@ public class Registrarse extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
-                                            progressDialog.dismiss();
+
 
                                             FirebaseUser user = mAuth.getCurrentUser();
 
@@ -196,20 +197,19 @@ public class Registrarse extends AppCompatActivity {
                                                         FirebaseUser user = mAuth.getCurrentUser();
 
                                                         Toast.makeText(getApplicationContext(), "Datos del  usuario correcto", Toast.LENGTH_SHORT).show();
-                                                        Intent i = new Intent(getApplicationContext(), Drawer.class);
+                                                        Intent i = new Intent(Registrarse.this, Login.class);
                                                         startActivity(i);
                                                         finish();
                                                     } else {
                                                         progressDialog.dismiss();
                                                         Toast.makeText(getApplicationContext(), "No se puedo completar tus datos", Toast.LENGTH_SHORT).show();
+                                                        finish();
                                                     }
                                                 }
                                             });
-                                            // Sign in success, update UI with the signed-in user's information
 
-
-                                            // updateUI(user);
                                         } else {
+
                                             // If sign in fails, display a message to the user.
                                             Toast.makeText(getApplicationContext(), "La conexión no se completo", Toast.LENGTH_SHORT).show();
                                             //updateUI(null);
@@ -219,19 +219,23 @@ public class Registrarse extends AppCompatActivity {
                                 });
 
                     } else {
+
                         Toast.makeText(getApplicationContext(), "Contraseña debe tener al menos 6 carácteres", Toast.LENGTH_SHORT).show();
 
 
                     }
                 } else {
+
                     Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
                 }
-            }else{
+            } else {
+
                 Toast.makeText(this, "Correo incorrecto", Toast.LENGTH_SHORT).show();
 
 
             }
         } else {
+            progressDialog.dismiss();
             Toast.makeText(this, "Para continuar llene todos los campos", Toast.LENGTH_SHORT).show();
 
         }
@@ -240,7 +244,7 @@ public class Registrarse extends AppCompatActivity {
     private boolean isEmailValid(String correo) {
         String expresion = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern patter = Pattern.compile(expresion, Pattern.CASE_INSENSITIVE);
-        Matcher matcher= patter.matcher(correo);
+        Matcher matcher = patter.matcher(correo);
         return matcher.matches();
     }
 }
