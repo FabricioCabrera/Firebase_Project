@@ -85,7 +85,7 @@ public class nav_maps extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if (v == btnUb) {
             miposicion();
-            Toast.makeText(getContext(), "clic button", Toast.LENGTH_LONG).show();
+
         }
         if (v == btnMaps) {
             verificar();

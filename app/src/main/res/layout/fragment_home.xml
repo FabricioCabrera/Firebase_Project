@@ -48,6 +48,70 @@
                 android:orientation="vertical">
 
 
+                <!--FECHA-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_baseline_date_range_24"
+                        app:tint="#B67676" />
+
+                    <TextView
+                        android:id="@+id/Fecha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Fecha" />
+
+
+                </LinearLayout>
+
+                <!--BIENVENIDO-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_date_range_24"
+                        android:text="Bienvenido (a):"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        app:tint="#B67676" />
+
+                    <TextView
+                        android:id="@+id/textuser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="--"
+                        android:textColor="#000"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textApellidos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="--"
+                        android:textColor="#000"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
                 <!--ID-->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -56,30 +120,7 @@
 
 
                 </LinearLayout>
-                <!--NOMBRE-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:orientation="horizontal">
 
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nombre:"
-                        android:textColor="#000" />
-
-                    <TextView
-                        android:id="@+id/textuser"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="--"
-                        android:textColor="#000" />
-
-
-                </LinearLayout>
 
                 <!--CORREO-->
                 <LinearLayout
@@ -91,27 +132,26 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="Correo:"
-                        android:textColor="#000" />
+                        android:text="CORREO:"
+                        android:textColor="#000"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textCorreo"
                         android:layout_width="wrap_content"
-
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:text="--"
-                        android:textColor="#000" />
+                        android:textColor="#000"
+                        android:textSize="12dp" />
 
 
                 </LinearLayout>
 
 
-
-
             </LinearLayout>
             <!--MÁS DATOS-->
-
 
 
             <!--MENÚ DE OPCIONES-->
@@ -119,31 +159,32 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="15dp"
+                android:orientation="horizontal"
                 android:weightSum="2">
 
                 <!--MIS DATOS-->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/datos"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:src="@drawable/datos" />
 
                     <Button
                         android:id="@+id/btnMisDatos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/border_buton_login"
+                        android:onClick="onClick"
                         android:text="MIS DATOS"
-                        android:textColor="#fff"
-                        android:background="@drawable/border_buton_login"/>
+                        android:textColor="#fff" />
 
                 </LinearLayout>
 
@@ -151,23 +192,23 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/crear"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:src="@drawable/crear" />
 
                     <Button
                         android:id="@+id/btnCrear"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/border_buton_login"
                         android:text="CREAR"
-                        android:textColor="#fff"
-                        android:background="@drawable/border_buton_login"/>
+                        android:textColor="#fff" />
 
                 </LinearLayout>
 
@@ -176,8 +217,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="15dp"
+                android:orientation="horizontal"
                 android:weightSum="2">
 
 
@@ -185,22 +226,22 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/publicaciones"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:src="@drawable/publicaciones" />
 
                     <Button
                         android:id="@+id/btnPublicaciones"
-                        android:text="PUBLICACIONES"
-                        android:textColor="#fff"
-                        android:background="@drawable/border_buton_login"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_buton_login"
+                        android:text="PUBLICACIONES"
+                        android:textColor="#fff" />
 
 
                 </LinearLayout>
@@ -209,22 +250,22 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/usuarios"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:src="@drawable/usuarios" />
 
                     <Button
                         android:id="@+id/btnUsuarios"
-                        android:text="USUARIOS"
-                        android:textColor="#fff"
-                        android:background="@drawable/border_buton_login"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_buton_login"
+                        android:text="USUARIOS"
+                        android:textColor="#fff" />
 
 
                 </LinearLayout>
@@ -234,8 +275,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="15dp"
+                android:orientation="horizontal"
                 android:weightSum="2">
 
 
@@ -243,22 +284,22 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/chats"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:src="@drawable/chats" />
 
                     <Button
                         android:id="@+id/btnChats"
-                        android:text="CHATS"
-                        android:textColor="#fff"
-                        android:background="@drawable/border_buton_login"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_buton_login"
+                        android:text="CHATS"
+                        android:textColor="#fff" />
 
 
                 </LinearLayout>
@@ -267,22 +308,22 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/salir_app"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:src="@drawable/salir_app" />
 
                     <Button
                         android:id="@+id/btnSalir"
-                        android:text="CERRAR SESIÓN"
-                        android:textColor="#fff"
-                        android:background="@drawable/border_buton_login"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_buton_login"
+                        android:text="CERRAR SESIÓN"
+                        android:textColor="#fff" />
 
 
                 </LinearLayout>

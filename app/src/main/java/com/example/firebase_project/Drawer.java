@@ -59,12 +59,7 @@ public class Drawer extends AppCompatActivity {
 
 
         setSupportActionBar(binding.appBarDrawer.toolbar);
-        binding.appBarDrawer.fab.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each

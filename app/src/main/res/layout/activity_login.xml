@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:passwordToggleEnabled="true"
 
-    tools:context=".Logearse.Login">
+    tools:context=".Login.Login">
 
     <ImageView
         android:id="@+id/imageView2"

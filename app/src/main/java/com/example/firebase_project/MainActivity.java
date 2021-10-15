@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.firebase_project.Logearse.Login;
-import com.example.firebase_project.Logearse.Registrarse;
+import com.example.firebase_project.Login.Login;
+import com.example.firebase_project.Login.Registrarse;
 
 
 public class MainActivity extends AppCompatActivity {

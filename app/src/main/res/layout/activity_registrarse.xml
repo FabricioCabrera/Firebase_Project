@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -25,25 +26,26 @@
 
         <LinearLayout
             android:layout_width="360dp"
-            android:layout_height="580dp"
+            android:layout_height="692dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="48dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="5dp"
             android:background="#28FFFFFF"
 
 
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imgPerfil"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="25dp"
+                android:text="REGÍSTRATE"
 
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                 android:textColor="@color/white"
@@ -56,13 +58,13 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="1dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/button_border"
                 android:drawableStart="@drawable/ic_baseline_supervised_user_circle_24"
                 android:drawableTint="#039BE5"
                 android:ems="10"
-                android:hint="Nombre"
+                android:hint="Nombres"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
                 android:paddingLeft="20dp"
@@ -71,11 +73,53 @@
                 android:textColorHint="#FFFFFF" />
 
             <EditText
+                android:id="@+id/txtEdad"
+
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/button_border"
+                android:drawableStart="@drawable/ic_baseline_perm_contact_calendar_24"
+                android:drawableTint="#039BE5"
+                android:ems="10"
+                android:hint="Edad"
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/txtTelefono"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="-20dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/button_border"
+                android:drawableStart="@drawable/ic_baseline_phone_24"
+                android:drawableTint="#039BE5"
+                android:ems="10"
+                android:hint="Telefono"
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="#FFFFFF" />
+
+
+            <EditText
                 android:id="@+id/txtCorreo"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="-20dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/button_border"
@@ -83,7 +127,7 @@
                 android:drawableTint="#039BE5"
                 android:ems="10"
                 android:hint="Correo"
-                android:inputType="textPersonName"
+                android:inputType="textEmailAddress"
                 android:minHeight="48dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
@@ -95,7 +139,7 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="-4dp"
+                android:layout_marginTop="-20dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/button_border"
@@ -120,6 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
+                android:layout_marginTop="-20dp"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/button_border"
                 android:clickable="true"
@@ -136,6 +181,8 @@
                 android:paddingRight="10dp"
                 android:textColor="@color/white"
                 android:textColorHint="#FFFFFF" />
+
+
 
             <Button
                 android:id="@+id/btguardar"

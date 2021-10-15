@@ -1,4 +1,4 @@
-package com.example.firebase_project.Logearse;
+package com.example.firebase_project.Login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,12 +47,12 @@ public class Login extends AppCompatActivity {
         Correo = (EditText) findViewById(R.id.txtCorreo);
         Contraseña = (EditText) findViewById(R.id.txtCont);
         BtnInicia = (Button) findViewById(R.id.btniniciar);
-        btnCrea= (Button)findViewById(R.id.btnCrear);
+        btnCrea = (Button) findViewById(R.id.btnCrear);
 
         btnCrea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(Login.this, Registrarse.class);
+                Intent i = new Intent(Login.this, Registrarse.class);
                 startActivity(i);
                 finish();
             }
@@ -144,8 +144,7 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
                             //FirebaseUser user = mAuth.getCurrentUser();
                             Intent i = new Intent(Login.this, Drawer.class);
-                            //i.putExtra("id", mAuth.getUid().toString());
-                            //i.putExtra("email", correo);
+
                             startActivity(i);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -164,8 +163,6 @@ public class Login extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Llene todos los campos para continuar", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 
 }
 

@@ -1,9 +1,10 @@
-package com.example.firebase_project.Logearse;
+package com.example.firebase_project.Login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.firebase_project.Drawer;
 import com.example.firebase_project.MainActivity;
 import com.example.firebase_project.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,21 +36,24 @@ import java.util.regex.Pattern;
 public class Registrarse extends AppCompatActivity {
 
 
-    private EditText Correo, Nombre, Contraseña;
+    private EditText Correo, Nombre, Contraseña, Edad, Telefono;
     private EditText Confirmarcontraseña;
     private Button btnRegistar, btnIniciar;
-    private ImageView Foto;
 
 
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
+
+    private ProgressDialog progressDialog;
 
 
     private String nombre = "";
     private String correo = "";
     private String contraseña = "";
     private String Ccontraseña = "";
-    private String url = "";
+    private String edad = "";
+    private String telefono = "";
+    private String imagen = "";
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -57,15 +62,17 @@ public class Registrarse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrarse);
 
+        progressDialog = new ProgressDialog(Registrarse.this);
+
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         Nombre = (EditText) findViewById(R.id.txtNombre);
         Correo = (EditText) findViewById(R.id.txtCorreo);
         Contraseña = (EditText) findViewById(R.id.txtcontraseña);
+        Edad = (EditText) findViewById(R.id.txtEdad);
+        Telefono = (EditText) findViewById(R.id.txtTelefono);
         Confirmarcontraseña = (EditText) findViewById(R.id.txtvcontraseña);
-        Foto = (ImageView) findViewById(R.id.imgPerfil);
-
         btnRegistar = (Button) findViewById(R.id.btguardar);
         btnIniciar = (Button) findViewById(R.id.btnInicia);
 
@@ -88,7 +95,7 @@ public class Registrarse extends AppCompatActivity {
 
     }
 
-
+    //SIRVE PARA VISUALIZAR Y OCULTAR LA CONTRASEÑA
     public boolean onTouch(View view, MotionEvent motionEvent) {
         switch (motionEvent.getAction()) {
             case MotionEvent.ACTION_UP:
@@ -140,15 +147,19 @@ public class Registrarse extends AppCompatActivity {
     }
 
     public void registrar() {
-
+        progressDialog.setTitle("Registrando");
+        progressDialog.setMessage("Espere por favor...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
 
         nombre = Nombre.getText().toString();
         correo = Correo.getText().toString();
         contraseña = Contraseña.getText().toString();
         Ccontraseña = Confirmarcontraseña.getText().toString();
-        url= Foto.getDrawable().toString();
+        edad = Edad.getText().toString();
+        telefono = Telefono.getText().toString();
 
-        if (!nombre.isEmpty() && !correo.isEmpty() && !contraseña.isEmpty() && !Ccontraseña.isEmpty()) {
+        if (!nombre.isEmpty() && !correo.isEmpty() && !contraseña.isEmpty() && !Ccontraseña.isEmpty() && !edad.isEmpty() && !telefono.isEmpty()) {
             if (isEmailValid(correo)) {
                 if (contraseña.equals(Ccontraseña)) {
                     if (contraseña.length() >= 6) {
@@ -157,13 +168,22 @@ public class Registrarse extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
+                                            progressDialog.dismiss();
+
+                                            FirebaseUser user = mAuth.getCurrentUser();
+
+                                            assert user != null;
+                                            String uid = user.getUid();
 
                                             Map<String, Object> map = new HashMap<>();
+                                            map.put("uid", uid);
                                             map.put("name", nombre);
                                             map.put("email", correo);
                                             map.put("password", contraseña);
                                             map.put("Confirm password", Ccontraseña);
-                                            map.put("img", url);
+                                            map.put("edad", edad);
+                                            map.put("telefono", telefono);
+                                            map.put("imagen", "");
 
 
                                             String id = mAuth.getCurrentUser().getUid();
@@ -172,13 +192,15 @@ public class Registrarse extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task2) {
                                                     if (task2.isSuccessful()) {
+                                                        progressDialog.dismiss();
                                                         FirebaseUser user = mAuth.getCurrentUser();
 
                                                         Toast.makeText(getApplicationContext(), "Datos del  usuario correcto", Toast.LENGTH_SHORT).show();
-                                                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                                        Intent i = new Intent(getApplicationContext(), Drawer.class);
                                                         startActivity(i);
                                                         finish();
                                                     } else {
+                                                        progressDialog.dismiss();
                                                         Toast.makeText(getApplicationContext(), "No se puedo completar tus datos", Toast.LENGTH_SHORT).show();
                                                     }
                                                 }
