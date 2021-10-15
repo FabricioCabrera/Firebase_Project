@@ -33,13 +33,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
+
                 app:cardCornerRadius="80dp">
                 <!--FOTO DE PERFIL-->
                 <ImageView
                     android:id="@+id/idFoto"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/foto_perfil"/>
                 !--FOTO DE PERFIL-->
 
             </androidx.cardview.widget.CardView>

@@ -30,7 +30,6 @@ public class MisDatos extends AppCompatActivity {
 
     private ImageView URL;
 
-    private Button btnEditar;
 
 
     @Override
@@ -50,16 +49,7 @@ public class MisDatos extends AppCompatActivity {
         txContraseñaDato = findViewById(R.id.ContraseñaDato);
         URL= findViewById(R.id.ImgenDato);
 
-        btnEditar = findViewById(R.id.btnActualizar);
 
-
-        btnEditar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MisDatos.this, Cambiar_Password.class);
-                startActivity(i);
-            }
-        });
 
 
         String id = mAuth.getCurrentUser().getUid();

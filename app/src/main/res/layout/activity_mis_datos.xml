@@ -209,26 +209,26 @@
                 android:textSize="16dp" />
 
 
+       </LinearLayout>
+    <!--
+            <Button
+                android:id="@+id/btnActualizar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/border_buton_login"
+                android:drawableStart="@drawable/ic_baseline_lock_24"
+                android:drawablePadding="20sp"
+                android:padding="15dp"
+                android:text="Actualizar Contraseña"
+                android:textColor="#fff"
+                android:textSize="17sp" />
+    -->
+
+
+
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btnActualizar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/border_buton_login"
-            android:drawableStart="@drawable/ic_baseline_lock_24"
-            android:drawablePadding="20sp"
-            android:padding="15dp"
-            android:text="Actualizar Contraseña"
-            android:textColor="#fff"
-            android:textSize="17sp" />
-
-
-
-
-    </LinearLayout>
 
 
 </RelativeLayout>
